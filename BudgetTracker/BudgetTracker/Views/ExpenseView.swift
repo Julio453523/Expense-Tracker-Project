@@ -1,7 +1,6 @@
 // ExpenseView.swift
 // BudgetTracker
 //
-// Created by Ricky Truckner on 11/21/23.
 //
 
 import SwiftUI
@@ -14,14 +13,13 @@ struct Expense: Identifiable {
     let amount: Double
 }
 
-// ExpenseView.swift
-
 struct ExpenseView: View {
     @EnvironmentObject var darkModeManager: DarkModeManager
     @EnvironmentObject var expenseList: ExpenseList
     @State private var name = ""
     @State private var date = Date()
     @State private var amount = 0.0
+    @State private var selectedCurrency = Currency.usd // Default currency is USD
 
     private var totalSpent: Double {
         expenseList.expenses.reduce(0) { $0 + $1.amount }
@@ -36,7 +34,8 @@ struct ExpenseView: View {
                     Text("Current mode:")
                     Text("\(darkModeManager.isDarkMode ? "Dark" : "Light")")
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .padding(.horizontal)                }
+                        .padding(.horizontal)
+                }
 
                 List {
                     ForEach(expenseList.expenses.sorted(by: { $0.date < $1.date })) { expense in
@@ -45,7 +44,7 @@ struct ExpenseView: View {
                             Spacer()
                             Text(expense.date, formatter: itemFormatter)
                             Spacer()
-                            Text(String(format: "$%.2f", expense.amount))
+                            Text(String(format: "%@%.2f", selectedCurrency.symbol, expense.amount))
                         }
                     }
                     .onDelete(perform: deleteExpenses)
@@ -53,7 +52,7 @@ struct ExpenseView: View {
 
                 HStack {
                     Text("Total Spent: ")
-                    Text(String(format: "$%.2f", totalSpent))
+                    Text(String(format: "%@%.2f", selectedCurrency.symbol, totalSpent))
                         .bold()
                 }
                 .padding(.horizontal)
