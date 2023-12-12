@@ -17,6 +17,7 @@ struct SettingsView: View {
         Section(header: Text("Account Information")) {
           TextField("First Name", text: $first)
           TextField("Last Name", text: $last)
+          TextField("Email", text: $last)
           DatePicker("Birthdate:", selection: $birthday)
         }
         Section(header: Text("Display")) {
