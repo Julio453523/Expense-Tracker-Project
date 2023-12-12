@@ -2,7 +2,6 @@
 //  BudgetTrackerUITests.swift
 //  BudgetTrackerUITests
 //
-//  Created by Ricky Truckner on 12/9/23.
 //
 
 import XCTest

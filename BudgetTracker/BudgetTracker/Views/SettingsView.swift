@@ -1,7 +1,6 @@
 // SettingsView.swift
 // BudgetTracker
 //
-// Created by Ricky Truckner on 11/21/23.
 //
 import SwiftUI
 

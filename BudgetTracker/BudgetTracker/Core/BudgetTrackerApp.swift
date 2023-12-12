@@ -2,7 +2,6 @@
 //  BudgetTrackerApp.swift
 //  BudgetTracker
 //
-//  Created by Ricky Truckner on 11/22/23.
 //
 
 import SwiftUI
